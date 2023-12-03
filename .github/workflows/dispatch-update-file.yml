@@ -1,0 +1,21 @@
+name: dispatch update file
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "./composables/**"
+jobs:
+  dispatch-target-updated:
+    strategy:
+      matrix:
+        repo: ["wattanx/repository-dispatch-target"]
+    name: dispatch-target-updated
+    runs-on: ubuntu-latest
+    steps:
+      - name: dispatch target-updated
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: target-updated
