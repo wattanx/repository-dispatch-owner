@@ -16,7 +16,7 @@ jobs:
       - name: dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: target-updated
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
